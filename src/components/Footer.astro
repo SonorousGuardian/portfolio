@@ -1,23 +1,22 @@
 ---
-import Icon from './Icon.astro';
-
 const currentYear = new Date().getFullYear();
 ---
 
 <footer>
 	<div class="group">
-		<p>
-			Designed & Developed in Portland with <a href="https://astro.build/">Astro</a>
-			<Icon icon="rocket-launch" size="1.2em" />
-		</p>
-		<p>&copy; {currentYear} Jeanine White</p>
+		<p>&copy; {currentYear} Amritesh Shrivastava</p>
 	</div>
+	
 	<p class="socials">
-		<a href="https://twitter.com/me"> Twitter</a>
-		<a href="https://github.com/me"> GitHub</a>
-		<a href="https://codepen.io/me"> CodePen</a>
+		<a href="https://www.linkedin.com/in/amritesh-shrivastava-ba76a9259" target="_blank">
+			<i class="fa-brands fa-linkedin"></i> LinkedIn
+		</a>
+		<a href="https://github.com/SonorousGuardian" target="_blank">
+			<i class="fa-brands fa-github"></i> GitHub
+		</a>
 	</p>
 </footer>
+
 <style>
 	footer {
 		display: flex;
@@ -32,14 +31,18 @@ const currentYear = new Date().getFullYear();
 
 	footer a {
 		color: var(--gray-400);
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+		text-decoration: none;
+		transition: color 0.2s ease;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem; /* Space between icon and text */
 	}
 
+	/* Hover Effect: Neon Cyan */
 	footer a:hover,
 	footer a:focus {
-		text-decoration-color: currentColor;
+		color: var(--neon-cyan);
+		text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
 	}
 
 	.group {
@@ -51,7 +54,7 @@ const currentYear = new Date().getFullYear();
 	.socials {
 		display: flex;
 		justify-content: center;
-		gap: 1rem;
+		gap: 1.5rem; /* More space between the links */
 		flex-wrap: wrap;
 	}
 

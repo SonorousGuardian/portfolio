@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import CertPreview from '../components/CertPreview.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+
+// Fetch Certifications
+const certifications = (await getCollection('certifications'))
+	.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+---
+
+<BaseLayout title="Certifications | Amritesh Shrivastava" description="Verified Credentials">
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="Certifications"
+				tagline="Verified credentials and professional milestones."
+				align="start"
+			/>
+			
+			<Grid variant="offset">
+				{
+					certifications.map((cert) => (
+						<li>
+							<CertPreview cert={cert} />
+						</li>
+					))
+				}
+			</Grid>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>

@@ -4,54 +4,56 @@ import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
+<BaseLayout title="About | Amritesh Shrivastava" description="About Amritesh Shrivastava - GRC Analyst and Security Engineer">
 	<div class="stack gap-20">
 		<main class="wrapper about">
-			<Hero
-				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
-			>
+			
+			<div class="img-container">
 				<img
 					width="1553"
 					height="873"
-					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
+					src="/assets/profile.jpg"
+					alt="Amritesh Shrivastava"
+					class="profile-pic"
 				/>
+			</div>
+
+			<Hero
+				title="About Me"
+				tagline="Part Auditor, Part Developer, Fully Committed to Security."
+			>
 			</Hero>
 
 			<section>
 				<h2 class="section-title">Background</h2>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						I am a final-year <strong>Computer Engineering</strong> student at <strong>BMS College of Engineering, Bangalore</strong>, recently selected as a <strong>System Engineer at Infosys</strong>. 
 					</p>
 					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
+						While most engineers focus solely on breaking code (Red Teaming) or fixing it (Blue Teaming), I found my passion in the structure that holds it all together: <strong>Governance, Risk, and Compliance (GRC)</strong>. However, I believe GRC shouldn't just be about spreadsheets and manual audits.
 					</p>
 					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
+						My goal is to bridge the gap between <strong>Policy and Automation</strong>. By combining my background in C++ and Python development with my expertise as an <strong>ISO 27001:2022 Lead Auditor</strong>, I build tools that make compliance continuous, automated, and efficient.
 					</p>
 				</div>
 			</section>
+
 			<section>
 				<h2 class="section-title">Education</h2>
 				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+					<p><strong>B.E. in Computer Science & Engineering</strong><br>
+					BMS College of Engineering, Bangalore<br>
+					<em style="color: var(--gray-400);">Expected Graduation: 2026</em></p>
 				</div>
 			</section>
+
 			<section>
-				<h2 class="section-title">Skills</h2>
+				<h2 class="section-title">Philosophy</h2>
 				<div class="content">
-					<p>officia unde omnis</p>
+					<p>
+						Security is not a checklist; it is a mindset. I advocate for <strong>"Compliance as Code,"</strong> ensuring that security standards like NIST CSF and CIS Benchmarks are integrated directly into the development pipeline, rather than checked retroactively.
+					</p>
 				</div>
 			</section>
 		</main>
@@ -67,10 +69,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		gap: 3.5rem;
 	}
 
-	img {
-		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
+	.img-container {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 1rem;
+	}
+
+	/* --- PROFILE PICTURE STYLES --- */
+	.profile-pic {
+		border-radius: 50%;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		width: 250px;
+		height: 250px;
+		border: 2px solid var(--neon-cyan);
+		filter: grayscale(100%);
+		transition: all 0.5s ease;
+		display: block;
+		box-shadow: none !important;
+	}
+
+	.profile-pic:hover {
+		filter: grayscale(0%);
+		transform: scale(1.05);
 	}
 
 	section {
@@ -84,6 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		grid-column-start: 1;
 		font-size: var(--text-xl);
 		color: var(--gray-0);
+		font-family: var(--font-mono); /* Hacker Font */
 	}
 
 	.content {
@@ -107,7 +129,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 			grid-template-columns: 1fr 60% 1fr;
 		}
 
-		.about > :global(:first-child) {
+		/* Both the Image Container and Hero need to be centered in the grid */
+		.about > :global(:first-child),
+		.about > :global(:nth-child(2)) {
 			grid-column-start: 2;
 		}
 

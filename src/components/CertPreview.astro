@@ -1,0 +1,117 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	cert: CollectionEntry<'certifications'>;
+}
+
+const { data } = Astro.props.cert;
+---
+
+<a class="cert-card" href={data.link || '#'} target="_blank">
+	<div class="cert-header">
+		<div class="icon-box">
+			<i class={`${data.icon || 'fa-solid fa-certificate'}`}></i>
+		</div>
+		<span class="badge">{data.badge || 'Credly'}</span>
+	</div>
+
+	<div class="cert-body">
+		<h5 class="title">{data.title}</h5>
+		<p class="issuer">Issued by: <span>{data.issuer}</span></p>
+	</div>
+
+	<div class="cert-footer">
+		<span class="date"><i class="fa-regular fa-calendar"></i> {data.date}</span>
+		<span class="verify">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+	</div>
+</a>
+
+<style>
+	.cert-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		background: #0d1117; /* GitHub Dark */
+		border: 1px solid #30363d;
+		border-radius: 8px;
+		padding: 1.5rem;
+		text-decoration: none;
+		transition: 0.2s ease;
+		min-height: 200px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.cert-card:hover {
+		border-color: var(--neon-purple);
+		transform: translateY(-3px);
+		box-shadow: 0 0 20px rgba(188, 19, 254, 0.15);
+	}
+
+	/* Header */
+	.cert-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 1rem;
+	}
+
+	.icon-box {
+		font-size: 2rem;
+		color: var(--gray-400);
+	}
+	
+	.cert-card:hover .icon-box { color: var(--neon-purple); }
+
+	.badge {
+		font-size: 0.75rem;
+		background: rgba(188, 19, 254, 0.1);
+		color: var(--neon-purple);
+		padding: 4px 8px;
+		border-radius: 4px;
+		border: 1px solid rgba(188, 19, 254, 0.2);
+		font-family: var(--font-mono);
+	}
+
+	/* Body */
+	.title {
+		font-size: 1.1rem;
+		color: #fff;
+		margin: 0 0 0.5rem 0;
+		font-family: var(--font-body);
+		font-weight: 600;
+	}
+
+	.issuer {
+		font-size: 0.9rem;
+		color: #8b949e;
+		margin: 0;
+	}
+	
+	.issuer span { color: #ccc; }
+
+	/* Footer */
+	.cert-footer {
+		margin-top: 1.5rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 0.8rem;
+		color: #8b949e;
+		border-top: 1px solid #21262d;
+		padding-top: 1rem;
+	}
+
+	.verify {
+		color: var(--neon-cyan);
+		opacity: 0;
+		transform: translateX(-10px);
+		transition: 0.3s ease;
+	}
+
+	.cert-card:hover .verify {
+		opacity: 1;
+		transform: translateX(0);
+	}
+</style>

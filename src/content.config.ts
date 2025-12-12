@@ -1,17 +1,26 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
 
 export const collections = {
 	work: defineCollection({
-		// Load Markdown files in the src/content/work directory.
-		loader: glob({ base: './src/content/work', pattern: '**/*.md' }),
 		schema: z.object({
 			title: z.string(),
 			description: z.string(),
 			publishDate: z.coerce.date(),
 			tags: z.array(z.string()),
-			img: z.string(),
+			img: z.string().optional(),
 			img_alt: z.string().optional(),
+			icon: z.string().optional(),
+		}),
+	}),
+	certifications: defineCollection({
+		schema: z.object({
+			title: z.string(),
+			issuer: z.string(),
+			date: z.string(),
+			icon: z.string().optional(),
+			// REMOVED .url() so "#" is allowed now
+			link: z.string().optional(), 
+			badge: z.string().optional(),
 		}),
 	}),
 };
