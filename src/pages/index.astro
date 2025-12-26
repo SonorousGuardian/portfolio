@@ -1,155 +1,233 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 // Component Imports
-import BaseLayout from '../layouts/BaseLayout.astro';
-import CallToAction from '../components/CallToAction.astro';
-import Grid from '../components/Grid.astro';
-import Hero from '../components/Hero.astro';
-import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Grid from "../components/Grid.astro";
+import Hero from "../components/Hero.astro";
+import Icon from "../components/Icon.astro";
+import Pill from "../components/Pill.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Fetch Projects only
-const projects = (await getCollection('work'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
+const projects = (await getCollection("work"))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 4);
 ---
 
-
 <BaseLayout>
-	<div class="stack gap-20 lg:gap-48">
-		<div class="wrapper stack gap-8 lg:gap-20">
-			
-			<header class="hero">
-				<Hero
-					title="Amritesh Shrivastava"
-					tagline="Bridging Policy Governance & Technical Automation."
-					align="start"
-				>
-					<div class="roles">
-						<Pill><i class="fa-solid fa-scale-balanced"></i> GRC Auditor</Pill>
-						<Pill><i class="fa-solid fa-code"></i> Python Dev</Pill>
-						<Pill><i class="fa-solid fa-shield-halved"></i> Security Ops</Pill>
-					</div>
-					
-					<div class="bio-text">
-						<p>Final-Year Computer Engineering Student & <span class="neon-green">ISO 27001 Lead Auditor</span>.</p>
-						<p>I don't just write policies; I build the tools to enforce them.</p>
-					</div>
+  <div class="stack gap-20 lg:gap-32">
+    <div class="wrapper stack gap-8 lg:gap-20">
+      <header class="hero">
+        <Hero
+          title="Amritesh Shrivastava"
+          tagline="Bridging Policy Governance & Technical Automation."
+          align="start"
+        >
+          <div class="roles">
+            <Pill><i class="fa-solid fa-scale-balanced"></i> GRC Auditor</Pill>
+            <Pill><i class="fa-solid fa-code"></i> Python Dev</Pill>
+            <Pill><i class="fa-solid fa-shield-halved"></i> Security Ops</Pill>
+          </div>
 
-					<div class="cta-buttons" style="margin-top: 20px;">
-						<a href="/resume.pdf" class="btn-resume" download>
-							<i class="fa-solid fa-download"></i> Download CV
-						</a>
-					</div>
-				</Hero>
+          <div class="bio-text">
+            <p>
+              Final-Year Computer Engineering Student & <span class="neon-green"
+                >ISO 27001 Lead Auditor</span
+              >.
+            </p>
+            <p>
+              I don't just write policies; I build the tools to enforce them.
+            </p>
+          </div>
 
-				<img
-					width="1553"
-					height="873"
-					src="/assets/profile.jpg"
-					alt="Amritesh Shrivastava"
-					class="profile-pic"
-				/>
-			</header>
+          <div class="cta-buttons" style="margin-top: 20px;">
+            <a href="/resume.pdf" class="btn-resume" download>
+              <i class="fa-solid fa-download"></i> Download CV
+            </a>
+          </div>
+        </Hero>
 
-			<section class="skills-section">
-				<h3 class="section-title">Technical <span class="neon-cyan">Arsenal</span></h3>
-				<div class="grid-3">
-					<div class="skill-card">
-						<i class="fa-solid fa-file-contract icon neon-purple"></i>
-						<h4>Governance (GRC)</h4>
-						<ul>
-							<li>ISO/IEC 27001:2022</li>
-							<li>NIST CSF</li>
-							<li>Risk Assessment</li>
-							<li>Cis Controls</li>
-						</ul>
-					</div>
-					<div class="skill-card">
-						<i class="fa-solid fa-terminal icon neon-cyan"></i>
-						<h4>Programming languages</h4>
-						<ul>
-							<li>Python (Security Tools)</li>
-							<li>Bash Scripting</li>
-							<li>C++</li>
-						</ul>
-					</div>
-					<div class="skill-card">
-						<i class="fa-solid fa-tools icon neon-green"></i>
-						<h4>Security Tools</h4>
-						<ul>
-							<li>Vulnerability Assessment</li>
-							<li>Suricata</li>
-							<li>Burp Suite</li>
-							<li>nmap</li>
-							<li>Wireshark</li>
-						</ul>
-					</div>
-				</div>
-			</section>
-		</div>
+        <img
+          width="1553"
+          height="873"
+          src="/assets/profile.jpg"
+          alt="Amritesh Shrivastava"
+          class="profile-pic"
+        />
+      </header>
 
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Deployed Modules</h3>
-					<p>Technical implementations of compliance frameworks.</p>
-				</header>
+      <section class="skills-section">
+        <h3 class="section-title">
+          Technical <span class="neon-cyan">Arsenal</span>
+        </h3>
+        <div class="grid-3">
+          <div class="skill-card">
+            <i class="fa-solid fa-file-contract icon neon-purple"></i>
+            <h4>Governance (GRC)</h4>
+            <ul>
+              <li>ISO/IEC 27001:2022</li>
+              <li>NIST CSF</li>
+              <li>Risk Assessment</li>
+              <li>Cis Controls</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <i class="fa-solid fa-terminal icon neon-cyan"></i>
+            <h4>Programming languages</h4>
+            <ul>
+              <li>Python (Security Tools)</li>
+              <li>Bash Scripting</li>
+              <li>C++</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <i class="fa-solid fa-tools icon neon-green"></i>
+            <h4>Security Tools</h4>
+            <ul>
+              <li>Vulnerability Assessment</li>
+              <li>Suricata</li>
+              <li>Burp Suite</li>
+              <li>nmap</li>
+              <li>Wireshark</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
 
-				<div class="gallery">
-					<Grid variant="offset">
-						{
-							projects.map((project) => (
-								<li>
-									<PortfolioPreview project={project} />
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-			</section>
-		</main>
-	</div>
+    <main class="wrapper stack gap-20 lg:gap-32">
+      <section class="section with-background with-cta">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3>Deployed Modules</h3>
+          <p>Technical implementations of compliance frameworks.</p>
+        </header>
+
+        <div class="gallery">
+          <Grid>
+            {
+              projects.map((project) => (
+                <li>
+                  <PortfolioPreview project={project} />
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
+      </section>
+    </main>
+  </div>
 </BaseLayout>
 
 <style>
-	.hero { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-	.roles { display: flex; gap: 0.5rem; }
-	.hero img { aspect-ratio: 5 / 4; object-fit: cover; object-position: top; border-radius: 1.5rem; box-shadow: var(--shadow-md); }
-	.btn-resume { display: inline-block; padding: 10px 20px; border: 1px solid var(--neon-green); color: var(--neon-green); text-decoration: none; border-radius: 99px; transition: 0.3s; }
-	.btn-resume:hover { background: var(--neon-green); color: black; box-shadow: 0 0 15px var(--neon-green); }
-	.skills-section { margin-top: 4rem; }
-	.section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 2rem; text-align: center; }
-	.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-	.skill-card { background: var(--gray-900); padding: 2rem; border-radius: 12px; border: 1px solid var(--gray-800); transition: 0.3s; }
-	.skill-card:hover { transform: translateY(-5px); border-color: var(--neon-cyan); }
-	.skill-card h4 { margin: 1rem 0; font-size: 1.2rem; color: var(--gray-100); }
-	.skill-card ul { padding-left: 1rem; color: var(--gray-300); line-height: 1.6; }
-	.icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-	
-	@media (min-width: 50em) {
-		.hero { display: grid; grid-template-columns: 6fr 4fr; padding-inline: 2.5rem; gap: 3.75rem; }
-		.hero img { aspect-ratio: 3 / 4; border-radius: 4.5rem; object-fit: cover; }
-	}
-	.profile-pic {
-	border-radius: 50%; /* Makes it a circle */
-	aspect-ratio: 1 / 1; /* Ensures it stays a perfect circle */
-	object-fit: cover;   /* Crops the image nicely */
-	width: 250px;        /* Sets a good size */
-	height: 250px;
-	border: 2px solid var(--neon-cyan); /* Adds a cool neon border */
-	filter: grayscale(100%); /* Makes it Black & White (classy) */
-	transition: all 0.5s ease;
-	margin: 0 auto;      /* Centers it */
-	display: block;
-}
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .roles {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .hero img {
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+  .btn-resume {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    text-decoration: none;
+    border-radius: 99px;
+    transition: 0.3s;
+  }
+  .btn-resume:hover {
+    background: var(--neon-green);
+    color: black;
+    box-shadow: 0 0 15px var(--neon-green);
+  }
+  .skills-section {
+    margin-top: 4rem;
+  }
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
 
-/* When you hover, it turns to color! */
-	.profile-pic:hover {
-		filter: grayscale(0%);
-		box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-	t	ransform: scale(1.05);
-}
+  .skill-card {
+    /* iOS Glass Effect */
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: 0.3s;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-cyan);
+  }
+  .skill-card h4 {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    color: var(--gray-100);
+  }
+  .skill-card ul {
+    padding-left: 1rem;
+    color: var(--gray-300);
+    line-height: 1.6;
+  }
+  .icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (min-width: 50em) {
+    .hero {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      padding-inline: 2.5rem;
+      gap: 3.75rem;
+    }
+    .hero img {
+      aspect-ratio: 3 / 4;
+      border-radius: 4.5rem;
+      object-fit: cover;
+    }
+  }
+
+  .profile-pic {
+    border-radius: 50%; /* Makes it a circle */
+    aspect-ratio: 1 / 1; /* Ensures it stays a perfect circle */
+    object-fit: cover; /* Crops the image nicely */
+    width: 250px; /* Sets a good size */
+    height: 250px;
+    border: 2px solid var(--neon-cyan); /* Adds a cool neon border */
+    /* filter: grayscale(100%);  REMOVED for original color */
+    transition: all 0.5s ease;
+    margin: 0 auto; /* Centers it */
+    display: block;
+  }
+
+  /* When you hover, it turns to color! */
+  .profile-pic:hover {
+    /* filter: grayscale(0%); REMOVED */
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+    transform: scale(1.05);
+  }
 </style>

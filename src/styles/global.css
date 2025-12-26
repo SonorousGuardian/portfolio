@@ -1,71 +1,102 @@
 /* src/styles/global.css */
 
 /* Load Hacker Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap");
 
 :root {
-	/* --- 1. THE CYBER PALETTE --- */
-	--neon-green: #39ff14;
-	--neon-cyan: #00f3ff;
-	--neon-purple: #bc13fe;
-	--bg-dark: #050505;
-	--bg-panel: #0f0f0f;
+  	/* --- 1. THE CYBER PALETTE (Updated for New BG) --- */
+	--neon-green: #FFD700; /* Cyber Gold (Matches the locks) */
+	--neon-cyan: #00f3ff;  /* High-energy Cyan */
+	--neon-purple: #5c27fe; /* Deep Electric Purple */
+  --bg-dark: #050505;
+  --bg-panel: #0f0f0f;
 
-	/* --- 2. OVERRIDING THE TEMPLATE VARIABLES --- */
-	/* We map the template's "Light Mode" variables to our "Dark Mode" colors */
-	
-	/* Backgrounds (Inverted: 999 is now Dark) */
-	--gray-999: var(--bg-dark);
-	--gray-900: var(--bg-panel);
-	--gray-800: #1a1a1a;
-	
-	/* Text (Inverted: 0 is now Light) */
-	--gray-0: #ffffff;
-	--gray-100: #e0e0e0;
-	--gray-200: #cccccc;
-	--gray-300: #999999;
-	--gray-400: #666666;
+  /* --- 2. OVERRIDING THE TEMPLATE VARIABLES --- */
+  /* We map the template's "Light Mode" variables to our "Dark Mode" colors */
 
-	/* Accents (Mapped to Neon) */
-	--accent-regular: var(--neon-cyan);
-	--accent-dark: var(--neon-green);
-	--accent-overlay: rgba(0, 243, 255, 0.1);
-	--accent-subtle: rgba(57, 255, 20, 0.1);
-	--accent-text-over: #000000;
+  /* Backgrounds (Inverted: 999 is now Dark) */
+  --gray-999: var(--bg-dark);
+  --gray-900: var(--bg-panel);
+  --gray-800: #1a1a1a;
 
-	/* Fonts */
-	--font-body: 'Inter', sans-serif;
-	--font-mono: 'Fira Code', monospace;
+  /* Text (Inverted: 0 is now Light) */
+  --gray-0: #ffffff;
+  --gray-100: #e0e0e0;
+  --gray-200: #cccccc;
+  --gray-300: #999999;
+  --gray-400: #666666;
 
-	/* Gradients */
-	--gradient-stop-1: var(--neon-cyan);
-	--gradient-stop-2: var(--neon-purple);
-	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-800) 150%);
+  /* Accents (Mapped to Neon) */
+  --accent-regular: var(--neon-cyan);
+  --accent-dark: var(--neon-green);
+  --accent-overlay: rgba(0, 243, 255, 0.1);
+  --accent-subtle: rgba(57, 255, 20, 0.1);
+  --accent-text-over: #000000;
+
+  /* Fonts */
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
+
+  /* Gradients */
+  --gradient-stop-1: var(--neon-cyan);
+  --gradient-stop-2: var(--neon-purple);
+  --gradient-subtle: linear-gradient(
+    150deg,
+    var(--gray-900) 19%,
+    var(--gray-800) 150%
+  );
 }
 
 /* Global Reset */
 html, body {
-	background-color: var(--bg-dark);
+	/* The Cyber Image Background */
+	background-color: #000;
+	background-image: 
+		linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), /* 85% Dark Overlay for text readability */
+		url('/assets/cyber-bg.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed; /* Parallax effect */
+	
 	color: var(--gray-100);
 	font-family: var(--font-body);
 }
 
 /* Force Headers to use Mono Font */
-h1, h2, h3, h4, h5 { font-family: var(--font-mono); }
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-mono);
+}
 
 /* --- CUSTOM NEON UTILITIES --- */
-.neon-green { color: var(--neon-green); text-shadow: 0 0 10px rgba(57, 255, 20, 0.4); }
-.neon-cyan { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 243, 255, 0.4); }
-.neon-purple { color: var(--neon-purple); text-shadow: 0 0 10px rgba(188, 19, 254, 0.4); }
+.neon-green { color: var(--neon-green); text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+.neon-cyan { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+.neon-purple { color: var(--neon-purple); text-shadow: 0 0 10px rgba(92, 39, 254, 0.5); }
 
 /* Matrix/Grain Overlay */
 .noise-overlay {
-	position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-	background: url('https://grainy-gradients.vercel.app/noise.svg');
-	opacity: 0.05; pointer-events: none; z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 999;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 4px; }
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan);
+  border-radius: 4px;
+}

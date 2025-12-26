@@ -2,35 +2,38 @@
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  cert: CollectionEntry<"certifications">;
+  post: CollectionEntry<"blogs">;
 }
 
-const { data } = Astro.props.cert;
+const { data } = Astro.props.post;
 ---
 
-<a class="cert-card" href={data.link || "#"} target="_blank">
-  <div class="cert-header">
+<a class="blog-card" href={data.link} target="_blank">
+  <div class="blog-header">
     <div class="icon-box">
-      <i class={`${data.icon || "fa-solid fa-certificate"}`}></i>
+      <i class="fa-brands fa-medium"></i>
     </div>
-    <span class="badge">{data.badge || "Credly"}</span>
+    <span class="badge">Article</span>
   </div>
 
-  <div class="cert-body">
+  <div class="blog-body">
     <h5 class="title">{data.title}</h5>
-    <p class="issuer">Issued by: <span>{data.issuer}</span></p>
+    <p class="description">{data.description}</p>
   </div>
 
-  <div class="cert-footer">
-    <span class="date"><i class="fa-regular fa-calendar"></i> {data.date}</span>
-    <span class="verify"
-      >Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></span
-    >
+  <div class="blog-footer">
+    <span class="date">
+      <i class="fa-regular fa-calendar"></i>
+      {data.publishDate.toLocaleDateString()}
+    </span>
+    <span class="read-more">
+      Read on Medium <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </span>
   </div>
 </a>
 
 <style>
-  .cert-card {
+  .blog-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -38,18 +41,18 @@ const { data } = Astro.props.cert;
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px; /* Matching radius */
+    border-radius: 12px;
     padding: 1.5rem;
     text-decoration: none;
-    transition: all 0.3s ease-in-out; /* Smoother transition */
-    min-height: 200px;
+    transition: all 0.3s ease-in-out;
+    min-height: 240px; /* SLightly taller for description */
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   }
 
-  .cert-card:hover {
-    /* Neon Cyan Border - Matching PortfolioPreview */
+  .blog-card:hover {
+    /* Neon Cyan Border - Matching CertPreview */
     border-color: var(--neon-cyan);
 
     /* THE NEON SHADOW MAGIC */
@@ -61,7 +64,7 @@ const { data } = Astro.props.cert;
   }
 
   /* Header */
-  .cert-header {
+  .blog-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -71,19 +74,20 @@ const { data } = Astro.props.cert;
   .icon-box {
     font-size: 2rem;
     color: var(--gray-400);
+    transition: color 0.3s ease;
   }
 
-  .cert-card:hover .icon-box {
-    color: var(--neon-purple);
+  .blog-card:hover .icon-box {
+    color: var(--neon-cyan); /* Medium logo turns Cyan on hover */
   }
 
   .badge {
     font-size: 0.75rem;
-    background: rgba(188, 19, 254, 0.1);
-    color: var(--neon-purple);
+    background: rgba(0, 243, 255, 0.1);
+    color: var(--neon-cyan);
     padding: 4px 8px;
     border-radius: 4px;
-    border: 1px solid rgba(188, 19, 254, 0.2);
+    border: 1px solid rgba(0, 243, 255, 0.2);
     font-family: var(--font-mono);
   }
 
@@ -94,20 +98,19 @@ const { data } = Astro.props.cert;
     margin: 0 0 0.5rem 0;
     font-family: var(--font-body);
     font-weight: 600;
+    line-height: 1.3;
   }
 
-  .issuer {
+  .description {
     font-size: 0.9rem;
     color: #8b949e;
     margin: 0;
-  }
-
-  .issuer span {
-    color: #ccc;
+    line-height: 1.5;
+    flex-grow: 1;
   }
 
   /* Footer */
-  .cert-footer {
+  .blog-footer {
     margin-top: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -118,14 +121,14 @@ const { data } = Astro.props.cert;
     padding-top: 1rem;
   }
 
-  .verify {
+  .read-more {
     color: var(--neon-cyan);
     opacity: 0;
     transform: translateX(-10px);
     transition: 0.3s ease;
   }
 
-  .cert-card:hover .verify {
+  .blog-card:hover .read-more {
     opacity: 1;
     transform: translateX(0);
   }

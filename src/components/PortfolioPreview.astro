@@ -1,127 +1,129 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-	project: CollectionEntry<'work'>;
+  project: CollectionEntry<"work">;
 }
 
 const { data, id } = Astro.props.project;
 ---
 
 <a class="card" href={`/work/${id}`}>
-	<div class="card-content">
-		
-		<div class="header">
-			<i class={`${data.icon || 'fa-solid fa-book'} card-icon`}></i>
-			<span class="title">{data.title}</span>
-		</div>
+  <div class="card-content">
+    <div class="header">
+      <i class={`${data.icon || "fa-solid fa-book"} card-icon`}></i>
+      <span class="title">{data.title}</span>
+    </div>
 
-		<p class="description">
-			{data.description}
-		</p>
+    <p class="description">
+      {data.description}
+    </p>
 
-		<div class="tags">
-			{data.tags.slice(0, 3).map((t) => (
-				<span class="tag">{t}</span>
-			))}
-		</div>
-	</div>
+    <div class="tags">
+      {data.tags.slice(0, 3).map((t) => <span class="tag">{t}</span>)}
+    </div>
+  </div>
 </a>
 
 <style>
-	/* --- THE BOX CONTAINER --- */
-	.card {
-		display: block;
-		height: 100%;
-		text-decoration: none;
-		color: inherit;
-		position: relative;
-		z-index: 1;
-	}
+  /* --- THE BOX CONTAINER --- */
+  .card {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    z-index: 1;
+  }
 
-	.card-content {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		min-height: 180px;
-		
-		/* THE DARK BOX LOOK */
-		background: #0a0a0a; /* Very dark grey, almost black */
-		border: 1px solid #222; /* Subtle border */
-		border-radius: 12px;
-		padding: 1.5rem;
-		
-		/* Smooth Transition for the Glow */
-		transition: all 0.3s ease-in-out;
-		box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Basic shadow */
-	}
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 180px;
 
-	/* --- HOVER EFFECT: THE NEON GLOW --- */
-	.card:hover .card-content {
-		/* Neon Cyan Border */
-		border-color: var(--neon-cyan);
-		
-		/* THE NEON SHADOW MAGIC */
-		box-shadow: 
-			0 0 15px rgba(0, 243, 255, 0.2),  /* Outer soft glow */
-			inset 0 0 10px rgba(0, 243, 255, 0.1); /* Inner glow */
-			
-		transform: translateY(-5px); /* Moves up slightly */
-	}
+    /* THE DARK BOX LOOK - BLUR UPDATED */
+    min-height: 180px;
 
-	/* --- HEADER STYLES --- */
-	.header {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		margin-bottom: 12px;
-	}
+    /* The iOS Glass Look */
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
 
-	.card-icon {
-		font-size: 1.2rem;
-		color: var(--neon-green); /* Green Icon */
-	}
+    /* Smooth Transition for the Glow */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
 
-	.title {
-		font-family: var(--font-mono);
-		font-size: 1.1rem;
-		font-weight: 600;
-		color: #fff; /* White Text */
-		letter-spacing: -0.5px;
-	}
+  /* --- HOVER EFFECT: THE NEON GLOW --- */
+  .card:hover .card-content {
+    /* Neon Cyan Border */
+    border-color: var(--neon-cyan);
 
-	/* Title turns Cyan on hover */
-	.card:hover .title {
-		color: var(--neon-cyan);
-		text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
-	}
+    /* THE NEON SHADOW MAGIC */
+    box-shadow:
+      0 0 15px rgba(0, 243, 255, 0.2),
+      /* Outer soft glow */ inset 0 0 10px rgba(0, 243, 255, 0.1); /* Inner glow */
 
-	/* --- DESCRIPTION --- */
-	.description {
-		font-size: 0.9rem;
-		color: #aaa; /* Light Grey Text */
-		line-height: 1.5;
-		margin-bottom: 20px;
-		flex-grow: 1; /* Pushes tags to the bottom */
-	}
+    transform: translateY(-5px); /* Moves up slightly */
+  }
 
-	/* --- TAGS PILLS --- */
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-	}
+  /* --- HEADER STYLES --- */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
 
-	.tag {
-		font-size: 0.75rem;
-		color: var(--neon-cyan);
-		background: rgba(0, 243, 255, 0.1);
-		padding: 4px 10px;
-		border-radius: 20px;
-		border: 1px solid rgba(0, 243, 255, 0.2);
-		font-family: var(--font-mono);
-	}
-	.repo-name {
+  .card-icon {
+    font-size: 1.2rem;
+    color: var(--neon-green); /* Green Icon */
+  }
+
+  .title {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff; /* White Text */
+    letter-spacing: -0.5px;
+  }
+
+  /* Title turns Cyan on hover */
+  .card:hover .title {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+  }
+
+  /* --- DESCRIPTION --- */
+  .description {
+    font-size: 0.9rem;
+    color: #aaa; /* Light Grey Text */
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Pushes tags to the bottom */
+  }
+
+  /* --- TAGS PILLS --- */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    color: var(--neon-cyan);
+    background: rgba(0, 243, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    font-family: var(--font-mono);
+  }
+  .repo-name {
     color: #fff; /* White is much more readable */
-}
+  }
 </style>

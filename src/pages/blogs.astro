@@ -3,33 +3,31 @@ import { getCollection } from "astro:content";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactCTA from "../components/ContactCTA.astro";
-import CertPreview from "../components/CertPreview.astro";
+import BlogPreview from "../components/BlogPreview.astro";
 import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
 
-// Fetch Certifications
-const certifications = (await getCollection("certifications")).sort(
-  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+const blogs = (await getCollection("blogs")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 ---
 
 <BaseLayout
-  title="Certifications | Amritesh Shrivastava"
-  description="Verified Credentials"
+  title="Blogs | Amritesh Shrivastava"
+  description="Security insights and GRC articles by Amritesh Shrivastava"
 >
   <div class="stack gap-20">
     <main class="wrapper stack gap-8">
       <Hero
-        title="Certifications"
-        tagline="Verified credentials and professional milestones."
+        title="Security Insights"
+        tagline="Articles on GRC, Cybersecurity, and the intersection of Policy & Code."
         align="start"
       />
-
       <Grid>
         {
-          certifications.map((cert) => (
+          blogs.map((post) => (
             <li>
-              <CertPreview cert={cert} />
+              <BlogPreview post={post} />
             </li>
           ))
         }

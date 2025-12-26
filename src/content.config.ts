@@ -23,4 +23,12 @@ export const collections = {
 			badge: z.string().optional(),
 		}),
 	}),
+	blogs: defineCollection({
+		schema: z.object({
+			title: z.string(),
+			description: z.string(),
+			publishDate: z.coerce.date(),
+			link: z.string(),
+		}),
+	}),
 };

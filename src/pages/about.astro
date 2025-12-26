@@ -1,144 +1,163 @@
 ---
-import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from "../components/ContactCTA.astro";
+import Hero from "../components/Hero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="About | Amritesh Shrivastava" description="About Amritesh Shrivastava - GRC Analyst and Security Engineer">
-	<div class="stack gap-20">
-		<main class="wrapper about">
-			
-			<div class="img-container">
-				<img
-					width="1553"
-					height="873"
-					src="/assets/profile.jpg"
-					alt="Amritesh Shrivastava"
-					class="profile-pic"
-				/>
-			</div>
+<BaseLayout
+  title="About | Amritesh Shrivastava"
+  description="About Amritesh Shrivastava - GRC Analyst and Security Engineer"
+>
+  <div class="stack gap-20">
+    <main class="wrapper about">
+      <div class="img-container">
+        <img
+          width="1553"
+          height="873"
+          src="/assets/profile.jpg"
+          alt="Amritesh Shrivastava"
+          class="profile-pic"
+        />
+      </div>
 
-			<Hero
-				title="About Me"
-				tagline="Part Auditor, Part Developer, Fully Committed to Security."
-			>
-			</Hero>
+      <Hero
+        title="About Me"
+        tagline="Part Auditor, Part Developer, Fully Committed to Security."
+      />
 
-			<section>
-				<h2 class="section-title">Background</h2>
-				<div class="content">
-					<p>
-						
-						I am a final-year <strong>Computer Engineering</strong> student at <strong>BMS College of Engineering, Bangalore</strong>, recently selected as a <strong>System Engineer at Infosys</strong>. 
-					</p>
-					<p>
-						While most engineers focus solely on breaking code (Red Teaming) or fixing it (Blue Teaming), I found my passion in the structure that holds it all together: <strong>Governance, Risk, and Compliance (GRC)</strong>. However, I believe GRC shouldn't just be about spreadsheets and manual audits.
-					</p>
-					<p>
-						My goal is to bridge the gap between <strong>Policy and Automation</strong>. By combining my background in C++ and Python development with my expertise as an <strong>ISO 27001:2022 Lead Auditor</strong>, I build tools that make compliance continuous, automated, and efficient.
-					</p>
-				</div>
-			</section>
+      <section>
+        <h2 class="section-title">Background</h2>
+        <div class="content">
+          <p>
+            I am a final-year <strong>Computer Engineering</strong> student at <strong
+              >BMS College of Engineering, Bangalore</strong
+            >, recently selected as a <strong>System Engineer at Infosys</strong
+            >.
+          </p>
+          <p>
+            While most engineers focus solely on breaking code (Red Teaming) or
+            fixing it (Blue Teaming), I found my passion in the structure that
+            holds it all together: <strong
+              >Governance, Risk, and Compliance (GRC)</strong
+            >. However, I believe GRC shouldn't just be about spreadsheets and
+            manual audits.
+          </p>
+          <p>
+            My goal is to bridge the gap between <strong
+              >Policy and Automation</strong
+            >. By combining my background in C++ and Python development with my
+            expertise as an <strong>ISO 27001:2022 Lead Auditor</strong>, I
+            build tools that make compliance continuous, automated, and
+            efficient.
+          </p>
+        </div>
+      </section>
 
-			<section>
-				<h2 class="section-title">Education</h2>
-				<div class="content">
-					<p><strong>B.E. in Computer Science & Engineering</strong><br>
-					BMS College of Engineering, Bangalore<br>
-					<em style="color: var(--gray-400);">Expected Graduation: 2026</em></p>
-				</div>
-			</section>
+      <section>
+        <h2 class="section-title">Education</h2>
+        <div class="content">
+          <p>
+            <strong>B.E. in Computer Science & Engineering</strong><br />
+            BMS College of Engineering, Bangalore<br />
+            <em style="color: var(--gray-400);">Expected Graduation: 2026</em>
+          </p>
+        </div>
+      </section>
 
-			<section>
-				<h2 class="section-title">Philosophy</h2>
-				<div class="content">
-					<p>
-						Security is not a checklist; it is a mindset. I advocate for <strong>"Compliance as Code,"</strong> ensuring that security standards like NIST CSF and CIS Benchmarks are integrated directly into the development pipeline, rather than checked retroactively.
-					</p>
-				</div>
-			</section>
-		</main>
+      <section>
+        <h2 class="section-title">Philosophy</h2>
+        <div class="content">
+          <p>
+            Security is not a checklist; it is a mindset. I advocate for <strong
+              >"Compliance as Code,"</strong
+            > ensuring that security standards like NIST CSF and CIS Benchmarks are
+            integrated directly into the development pipeline, rather than checked
+            retroactively.
+          </p>
+        </div>
+      </section>
+    </main>
 
-		<ContactCTA />
-	</div>
+    <ContactCTA />
+  </div>
 </BaseLayout>
 
 <style>
-	.about {
-		display: flex;
-		flex-direction: column;
-		gap: 3.5rem;
-	}
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
 
-	.img-container {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 1rem;
-	}
+  .img-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
 
-	/* --- PROFILE PICTURE STYLES --- */
-	.profile-pic {
-		border-radius: 50%;
-		aspect-ratio: 1 / 1;
-		object-fit: cover;
-		width: 250px;
-		height: 250px;
-		border: 2px solid var(--neon-cyan);
-		filter: grayscale(100%);
-		transition: all 0.5s ease;
-		display: block;
-		box-shadow: none !important;
-	}
+  /* --- PROFILE PICTURE STYLES --- */
+  .profile-pic {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+    border: 2px solid var(--neon-cyan);
+    /* filter: grayscale(100%); REMOVED */
+    transition: all 0.5s ease;
+    display: block;
+    box-shadow: none !important;
+  }
 
-	.profile-pic:hover {
-		filter: grayscale(0%);
-		transform: scale(1.05);
-	}
+  .profile-pic:hover {
+    /* filter: grayscale(0%); REMOVED */
+    transform: scale(1.05);
+  }
 
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		color: var(--gray-200);
-	}
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--gray-200);
+  }
 
-	.section-title {
-		grid-column-start: 1;
-		font-size: var(--text-xl);
-		color: var(--gray-0);
-		font-family: var(--font-mono); /* Hacker Font */
-	}
+  .section-title {
+    grid-column-start: 1;
+    font-size: var(--text-xl);
+    color: var(--gray-0);
+    font-family: var(--font-mono); /* Hacker Font */
+  }
 
-	.content {
-		grid-column: 2 / 4;
-	}
+  .content {
+    grid-column: 2 / 4;
+  }
 
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
-	}
+  .content :global(a) {
+    text-decoration: 1px solid underline transparent;
+    text-underline-offset: 0.25em;
+    transition: text-decoration-color var(--theme-transition);
+  }
 
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
-	}
+  .content :global(a:hover),
+  .content :global(a:focus) {
+    text-decoration-color: currentColor;
+  }
 
-	@media (min-width: 50em) {
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
-		}
+  @media (min-width: 50em) {
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 60% 1fr;
+    }
 
-		/* Both the Image Container and Hero need to be centered in the grid */
-		.about > :global(:first-child),
-		.about > :global(:nth-child(2)) {
-			grid-column-start: 2;
-		}
+    /* Both the Image Container and Hero need to be centered in the grid */
+    .about > :global(:first-child),
+    .about > :global(:nth-child(2)) {
+      grid-column-start: 2;
+    }
 
-		section {
-			display: contents;
-			font-size: var(--text-lg);
-		}
-	}
+    section {
+      display: contents;
+      font-size: var(--text-lg);
+    }
+  }
 </style>
